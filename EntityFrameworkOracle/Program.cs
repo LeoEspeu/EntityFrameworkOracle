@@ -12,7 +12,7 @@ namespace EntityFrameworkOracle
         {
             using (OracleEntities oracleContexte = new OracleEntities())
             {
-                Console.WriteLine("---------------------------------------------------------------\n Cours et Séminaires ----------\n---------------------------------------------------------------");
+                //Console.WriteLine("---------------------------------------------------------------\n Cours et Séminaires ----------\n---------------------------------------------------------------");
                 //var idEmploye = 33;
                 //var requeteEmployesByid = from EMPLOYE in oracleContexte.EMPLOYEs where EMPLOYE.NUMEMP == idEmploye select EMPLOYE;
 
@@ -27,16 +27,16 @@ namespace EntityFrameworkOracle
                 //}
 
 
-                var requete = from c in oracleContexte.COURS join SEMINAIRE in oracleContexte.SEMINAIREs on c.CODECOURS equals SEMINAIRE.CODECOURS select c;
-                var lesCours = requete.Distinct().ToList();
-                foreach (var leCour in lesCours)
-                {
-                    Console.WriteLine(leCour.CODECOURS + " - " + leCour.LIBELLECOURS + " - " + leCour.NBJOURS);
-                    foreach (var lesemi in leCour.SEMINAIREs)
-                    {
-                        Console.WriteLine("      " + lesemi.DATEDEBUTSEM);
-                    }
-                }
+                //var requete = from c in oracleContexte.COURS join SEMINAIRE in oracleContexte.SEMINAIREs on c.CODECOURS equals SEMINAIRE.CODECOURS select c;
+                //var lesCours = requete.Distinct().ToList();
+                //foreach (var leCour in lesCours)
+                //{
+                //    Console.WriteLine(leCour.CODECOURS + " - " + leCour.LIBELLECOURS + " - " + leCour.NBJOURS);
+                //    foreach (var lesemi in leCour.SEMINAIREs)
+                //    {
+                //        Console.WriteLine("      " + lesemi.DATEDEBUTSEM);
+                //    }
+                //}
 
 
                 //var employeProjetNom = from emp in oracleContexte.EMPLOYEs
@@ -74,6 +74,36 @@ namespace EntityFrameworkOracle
                 //oracleContexte.COURS.Add(unCour);
                 //oracleContexte.SaveChanges();
                 //Console.WriteLine("Le cours a été créé");
+            }
+
+
+            using(OracleEntitiesMaison oracleContexte = new OracleEntitiesMaison())
+            {
+                Console.WriteLine("---------------------------------------------------------------\n Test de ToString() ----------\n---------------------------------------------------------------");
+                //var requete = from c in oracleContexte.COURS join SEMINAIRE in oracleContexte.SEMINAIREs on c.CODECOURS equals SEMINAIRE.CODECOURS select c;
+                //var lesCours = requete.Distinct().ToList();
+                //foreach (var leCour in lesCours)
+                //{
+                //    Console.WriteLine(leCour.CODECOURS + " - " + leCour.LIBELLECOURS + " - " + leCour.NBJOURS);
+                //    foreach (var lesemi in leCour.SEMINAIREs)
+                //    {
+                //        Console.WriteLine("      " + lesemi.DATEDEBUTSEM);
+                //    }
+                //}
+                var requete = from s in oracleContexte.COURS select s;
+                var lesCours = requete.ToList();
+                foreach (var unCour in lesCours)
+                {
+                    Console.WriteLine(unCour);
+                }
+
+                var requeteEmp = from e in oracleContexte.EMPLOYEs select e;
+                var lesEmployes = requeteEmp.ToList();
+                Console.WriteLine("\n\n---------------------------------");
+                foreach (var emp in lesEmployes)
+                {
+                    Console.WriteLine(emp);
+                }
             }
             Console.ReadLine();
         }

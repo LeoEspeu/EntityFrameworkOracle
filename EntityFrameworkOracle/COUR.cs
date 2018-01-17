@@ -23,6 +23,7 @@ namespace EntityFrameworkOracle
         public string CODECOURS { get; set; }
         public string LIBELLECOURS { get; set; }
         public decimal NBJOURS { get; set; }
+        public decimal TARIF { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SEMINAIRE> SEMINAIREs { get; set; }
